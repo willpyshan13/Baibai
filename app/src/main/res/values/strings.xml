@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Baibai</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="ble_not_open">蓝牙没有打开</string>
+    <string name="ble_not_supported">蓝牙不支持IBeacon</string>
+    <string name="gangcailianjieguole">CONN状态为NO</string>
+    <string name="connecting">正在连接:</string>
+</resources>
