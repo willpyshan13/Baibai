@@ -1,2 +1,2 @@
-include ':app', 'Volley'
+include ':app', 'Volley', 'qrcodereaderview'
 include ':androidPullToRefresh'
