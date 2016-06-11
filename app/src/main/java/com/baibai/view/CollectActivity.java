@@ -1,85 +1,91 @@
 package com.baibai.view;
 
 import com.baibai.R;
+import com.baibai.tools.ScreenProperties;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * @Comments : TODO(用一句话描述该文件做什么)
  * @author will
+ * @Comments : TODO(用一句话描述该文件做什么)
  * @CreateDate : 2016年6月1日 上午9:19:10
  * @ModifiedBy : will
  * @ModifiedDate: 2016年6月1日 上午9:19:10
  * @Modified: TODO(用一句话描述该文件做什么)
  */
 public class CollectActivity extends BaseActivity {
-	private static final String TAG = "baibai_CollectActivity";
-	private ListView mStoreLv;
+    private static final String TAG = "baibai_CollectActivity";
+    private ListView mStoreLv;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_collect);
-		initView();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_collect);
+        initView();
+    }
 
-	private void initView() {
-		mStoreLv = (ListView) findViewById(R.id.collect_lv);
-		GoodsAdapter adapter = new GoodsAdapter();
-		mStoreLv.setAdapter(adapter);
-	}
+    private void initView() {
+        mStoreLv = (ListView) findViewById(R.id.collect_lv);
+        GoodsAdapter adapter = new GoodsAdapter();
+        mStoreLv.setAdapter(adapter);
+    }
 
-	class GoodsAdapter extends BaseAdapter {
+    class GoodsAdapter extends BaseAdapter {
 
-		@Override
-		public int getCount() {
-			// TODO Auto-generated method stub
-			return 10;
-		}
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return 10;
+        }
 
-		@Override
-		public Object getItem(int position) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        @Override
+        public Object getItem(int position) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		@Override
-		public long getItemId(int position) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
+        @Override
+        public long getItemId(int position) {
+            // TODO Auto-generated method stub
+            return 0;
+        }
 
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			ViewHolder holder;
-			if (convertView == null) {
-				holder = new ViewHolder();
-				convertView = getLayoutInflater().inflate(R.layout.item_collect_goods, null);
-				convertView.setTag(holder);
-			} else {
-				holder = (ViewHolder) convertView.getTag();
-			}
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                holder = new ViewHolder();
+                convertView = getLayoutInflater().inflate(R.layout.item_collect_goods, null);
+                holder.goodsIv = (ImageView) convertView.findViewById(R.id.collect_goods_iv_icon);
+                holder.goodsprePrice = (TextView) convertView.findViewById(R.id.collect_goods_tv_preprice);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+            holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / 3, ScreenProperties.getScreenHeight() / 6));
+            holder.goodsprePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            return convertView;
+        }
 
-			return convertView;
-		}
+        class ViewHolder {
+            ImageView goodsIv;
+            TextView shopName;
+            TextView goodsName;
+            TextView goodsDiscount;
+            TextView goodsDistance;
+            TextView goodsPrice;
+            TextView goodsprePrice;
+            TextView goodsContent;
+        }
 
-		class ViewHolder {
-			ImageView goodsIv;
-			TextView shopName;
-			TextView goodsName;
-			TextView goodsDiscount;
-			TextView goodsDistance;
-			TextView goodsPrice;
-			TextView goodsprePrice;
-			TextView goodsContent;
-		}
-
-	}
+    }
 }

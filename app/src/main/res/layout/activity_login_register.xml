@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" 
-    android:orientation="vertical">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/bg_register_login"
+                android:orientation="vertical"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
-        <Button
-            android:id="@+id/login_register_btn_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="88dp"
-            android:text="注册" />
+    <Button
+        android:id="@+id/login_register_btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp"
+        android:text="注册"/>
 
-        <Button
-            android:id="@+id/login_register_btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="登陆"
-            android:layout_above="@+id/login_register_btn_register"
-            android:layout_alignLeft="@+id/login_register_btn_register"
-            android:layout_alignStart="@+id/login_register_btn_register" />
+    <Button
+        android:id="@+id/login_register_btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/login_register_btn_register"
+        android:layout_alignLeft="@+id/login_register_btn_register"
+        android:layout_alignStart="@+id/login_register_btn_register"
+        android:text="登陆"/>
 
 </RelativeLayout>

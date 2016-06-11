@@ -14,12 +14,14 @@
             android:id="@+id/collect_btn_store"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:text="收藏的超市" />
 
         <Button
             android:id="@+id/collect_btn_goods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:text="收藏的商品" />
     </LinearLayout>
 

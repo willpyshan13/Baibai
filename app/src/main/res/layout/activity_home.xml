@@ -1,53 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
 
-    <ScrollView
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_default_address" />
-
+            <com.jude.rollviewpager.RollPagerView
+                android:id="@+id/roll_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:rollviewpager_play_delay="3000"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/home_bt_sort_distance"
                     style="@style/HomeSortButton"
-                    android:text="按距离排序" />
+                    android:text="按距离排序"/>
+
                 <Button
                     android:id="@+id/home_bt_sort_discount"
                     style="@style/HomeSortButton"
-                    android:text="按折扣排序" />
+                    android:text="按折扣排序"/>
+
                 <Button
                     android:id="@+id/home_bt_sort_price"
                     style="@style/HomeSortButton"
-                    android:text="按金额排序" />
+                    android:text="按金额排序"/>
+
                 <Button
                     android:id="@+id/home_bt_sort"
                     style="@style/HomeSortButton"
-                    android:text="筛选" />
+                    android:text="筛选"/>
             </LinearLayout>
-            <com.baibai.widget.CommonListview android:id="@+id/home_lv"
+
+            <com.baibai.widget.CommonListview
+                android:id="@+id/home_lv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                
+
             </com.baibai.widget.CommonListview>
         </LinearLayout>
-    </ScrollView>
-    
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
 </LinearLayout>
