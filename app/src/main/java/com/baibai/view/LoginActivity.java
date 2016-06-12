@@ -15,12 +15,18 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.baibai.R;
 import com.baibai.tools.LoginCacheUtils;
 import com.baibai.tools.MD5Utils;
 import com.baibai.tools.RequestRul;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -97,38 +103,24 @@ public class LoginActivity extends BaseActivity {
 
     public void processLogin() {
         LoginCacheUtils.TOKEN = "login";
-        Log.d(TAG, "processLogin");
-        StringRequest request = new StringRequest(Request.Method.POST, RequestRul.SYSTEMGETPHONECODE, new Response.Listener<String>() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("userPhone","545878787");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,RequestRul.SYSTEMGETPHONECODE,jsonObject,new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
-                Log.d(TAG, response);
+            public void onResponse(JSONObject response) {
+                Log.e(TAG, response.toString()+"  "+response.optString("data")+"  "+response.optString("result"));
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-//                headers.put("userPhone", mUsername.getText().toString());
-//                headers.put("userPwd", MD5Utils.GetMD5Code(mPassword.getText().toString()));
-//                headers.put("deviceToken", "android");
-                headers.put("userPhone", "54548787");
-                Log.d(TAG, headers.toString());
-                return headers;
-            }
+        });
 
-            @Override
-            public String getBodyContentType() {
-                Log.d(TAG, super.getBodyContentType());
-                return "text/plain;charset=UTF-8";
-            }
-        };
-
-        getBaseRequest().add(request);
-
-//        finish();
+        getBaseRequest().add(jsonObjectRequest);
     }
 }
