@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/address_manager_tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+        <TextView
+            android:id="@+id/address_manager_tv_telphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="123456789"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/address_manager_tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:text="福建省厦门市思明区软件园二期连前接到望海路390号"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/address_manager_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_address" />
+
+        <TextView
+            android:id="@+id/address_manager_tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/icon_remove"
+            android:gravity="center"
+            android:text="@string/delete"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/address_manager_tv_delete"
+            android:drawableLeft="@drawable/my_notes_ng"
+            android:gravity="center"
+            android:text="@string/edit"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+    </RelativeLayout>
+</LinearLayout>

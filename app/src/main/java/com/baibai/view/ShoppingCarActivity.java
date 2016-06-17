@@ -1,4 +1,7 @@
 package com.baibai.view;
+
+import android.os.Bundle;
+
 /**
  * @Comments : TODO(用一句话描述该文件做什么) 
  * @author will
@@ -10,4 +13,10 @@ package com.baibai.view;
  */
 public class ShoppingCarActivity extends BaseActivity {
 	private static final String TAG = "baibai_ShoppingCarActivity";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+	}
 }

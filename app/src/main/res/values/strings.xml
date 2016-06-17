@@ -28,4 +28,43 @@
     <string name="cancel">取消</string>
 
     <string name="current_store">附近超市</string>
+
+    <!--fotgetpasscode -->
+    <string name="get_password">找回密码</string>
+    <string name="phone_num">手机号</string>
+    <string name="phone_num_hint">请输入手机号</string>
+    <string name="next_step">下一步</string>
+    <string name="please_input_msm_code">请输入短信验证码</string>
+
+    <string name="title_activity_address_manager">管理收货地址</string>
+    <string name="default_address">默认地址</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="add_new_address">添加新地址</string>
+    <string name="title_activity_add_new_address">添加新地址</string>
+    <string name="save">保存</string>
+    <string name="address_username">收货人</string>
+    <string name="address_tel">联系电话</string>
+    <string name="address_area">所在地区</string>
+    <string name="street">街道</string>
+    <string name="please_select">请选择</string>
+    <string name="set_default">设为默认</string>
+    <string name="detail_address_hint">请填写详细地址，不少于5个字</string>
+
+    <string name="point_life">积分生活</string>
+    <string name="point_quick_earn">快速赚积分</string>
+    <string name="point_quick_check_all">查看所有奖品</string>
+    <string name="collect_point_detail">手机积分可以兑换积分卡，这里的教你\n如何得到更多</string>
+
+    <string name="earn_point">赚积分</string>
+    <string name="earn_point_way_walk">走路</string>
+    <string name="earn_point_way_walk_detail">走路进店开始</string>
+    <string name="earn_point_way_qrcode">扫码</string>
+    <string name="earn_point_way_qrcode_detail">在超市扫码的商品</string>
+    <string name="earn_point_way_shopping">购物</string>
+    <string name="earn_point_way_shopping_detail">购买商品获得积分</string>
+    <string name="earn_point_way_add_person">邀请朋友</string>
+    <string name="earn_point_way_add_person_way">邀请朋友获得积分</string>
+    <string name="title_activity_gift_list">您的礼品</string>
+    <string name="title_activity_select_gift">GiftSelectActivity</string>
 </resources>

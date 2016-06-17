@@ -6,26 +6,36 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.baibai.R;
 
-public class ForgetPasswordActivity extends AppCompatActivity {
+/**
+ *
+ */
+public class ForgetPasswordActivity extends BaseActivity {
+
+    private Button mBtnGetCode, mBtnNextSetp;
+    private EditText mEtPhone, mEtCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        initView();
     }
 
+    private void initView() {
+        setRightBtnVisible(View.GONE);
+        setLeftBtnOnclick();
+        setCenterText(R.string.get_password);
+
+        mBtnGetCode = (Button) findViewById(R.id.fotget_btn_getcode);
+        mBtnNextSetp = (Button) findViewById(R.id.fotget_btn_next);
+
+        mEtPhone = (EditText) findViewById(R.id.fotget_et_phone_num);
+        mEtCode = (EditText) findViewById(R.id.fotget_et_msmcode);
+
+    }
 }

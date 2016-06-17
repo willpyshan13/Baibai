@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.baibai.view.AddressManagerActivity">
+
+    <include
+        android:id="@+id/top_title"
+        layout="@layout/layout_title" />
+
+    <Button
+        android:id="@+id/address_manager_btn"
+        android:layout_width="match_parent"
+        android:layout_margin="15dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="@android:color/white"
+        android:background="@color/top_bar_background"
+        android:layout_alignParentBottom="true"
+        android:text="@string/add_new_address" />
+
+    <ListView
+        android:id="@+id/address_manager_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/address_manager_btn"
+        android:layout_below="@+id/top_title" />
+</RelativeLayout>

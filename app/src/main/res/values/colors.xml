@@ -17,7 +17,7 @@
     <color name="search_text">#3b3b3b</color>
     <color name="search_bg">#ececec</color>
     <color name="light_black">#1C2127</color>
-    <color name="text_blue">#000000</color>
+    <color name="text_black">#000000</color>
     <color name="text_login">#f47e00</color>
     <color name="title_text">#2a2929</color>
     <color name="gray_hl">#D2D3D5</color>
@@ -34,4 +34,5 @@
     <color name="home_goods_distance">#ff4800</color>
     <color name="top_bar_background">#7a4c84</color>
     <color name="mine_background_gray">#f0f0f0</color>
+    <color name="shopping_btn">#ff5500</color>
 </resources>
