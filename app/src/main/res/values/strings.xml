@@ -67,4 +67,7 @@
     <string name="earn_point_way_add_person_way">邀请朋友获得积分</string>
     <string name="title_activity_gift_list">您的礼品</string>
     <string name="title_activity_select_gift">GiftSelectActivity</string>
+
+    <string name="search_history">历史搜索</string>
+    <string name="search_hot">热门搜索</string>
 </resources>
