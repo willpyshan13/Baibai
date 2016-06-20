@@ -66,8 +66,20 @@
     <string name="earn_point_way_add_person">邀请朋友</string>
     <string name="earn_point_way_add_person_way">邀请朋友获得积分</string>
     <string name="title_activity_gift_list">您的礼品</string>
-    <string name="title_activity_select_gift">GiftSelectActivity</string>
+    <string name="title_activity_select_gift">礼品选择</string>
 
     <string name="search_history">历史搜索</string>
     <string name="search_hot">热门搜索</string>
+
+    <string name="search_ranking_total">综合排序</string>
+    <string name="search_ranking_top">价格由低到高</string>
+    <string name="search_ranking_bottom">价格由高到低</string>
+    <string name="search_ranking_sales_first">销量优先</string>
+    <string name="search_filter">筛选</string>
+
+    <string name="select_all">全选</string>
+    <string name="total_count">合计:</string>
+    <string name="no_contain_money">不含运费</string>
+    <string name="calculate">结算</string>
+    <string name="shopping_car">购物车</string>
 </resources>

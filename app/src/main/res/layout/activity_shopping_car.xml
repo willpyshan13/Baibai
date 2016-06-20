@@ -17,27 +17,51 @@
         <CheckBox
             android:id="@+id/shopping_cb_select"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/select_all" />
+
+        <Button
+            android:id="@+id/shopping_car_btn_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/calculate"
+            android:layout_alignParentRight="true" />
 
         <LinearLayout
-            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:id="@+id/shopping_money_model"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/shopping_car_btn_pay"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="合计"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="合计"/>
+                    android:text="@string/total_count" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="58"
+                    android:textColor="@color/search_result_price" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_contain_money" />
+
         </LinearLayout>
+
+
     </RelativeLayout>
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView

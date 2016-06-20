@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.baibai.view.SelectGiftActivity"
+    tools:context=".view.GiftSelectActivity"
     tools:showIn="@layout/activity_select_gift">
     <include layout="@layout/layout_title"
         android:id="@+id/include" />

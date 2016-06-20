@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.baibai.view.GoodsSearchActivity">
+    tools:context=".view.SearchGoodsActivity">
     <include layout="@layout/layout_title"/>
     <RelativeLayout
         android:padding="@dimen/content_padding"
