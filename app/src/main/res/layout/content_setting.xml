@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pay_gray_background"
+    android:orientation="vertical"
+    tools:context="com.baibai.view.SettingActivity"
+    tools:showIn="@layout/activity_setting">
+
+    <include layout="@layout/layout_title"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/content_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/common_userhead"
+            android:textAppearance="?android:textAppearanceLarge"/>
+
+        <ImageView
+            android:id="@+id/right_arror_userhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_arror_right"/>
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/content_padding_right"
+            android:layout_toLeftOf="@id/right_arror_userhead"
+            android:src="@drawable/carrefour"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:padding="@dimen/content_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/common_username"
+            android:textAppearance="?android:textAppearanceLarge"/>
+
+        <ImageView
+            android:id="@+id/right_arror_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_arror_right"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/content_padding_right"
+            android:layout_toLeftOf="@id/right_arror_username"
+            android:text="拜拜"
+            android:textAppearance="?android:textAppearanceLarge"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:padding="@dimen/content_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/common_nickname"
+            android:textAppearance="?android:textAppearanceLarge"/>
+
+        <ImageView
+            android:id="@+id/right_arror_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_arror_right"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/content_padding_right"
+            android:layout_toLeftOf="@id/right_arror_nickname"
+            android:text="赵日天"
+            android:textAppearance="?android:textAppearanceLarge"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:padding="@dimen/content_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/common_sex"
+            android:textAppearance="?android:textAppearanceLarge"/>
+
+        <ImageView
+            android:id="@+id/right_arror_usersex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_arror_right"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/content_padding_right"
+            android:layout_toLeftOf="@id/right_arror_usersex"
+            android:text="女"
+            android:textAppearance="?android:textAppearanceLarge"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_marginTop="1dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/content_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/my_order_address"
+            android:textAppearance="?android:textAppearanceLarge"/>
+
+    </RelativeLayout>
+</LinearLayout>

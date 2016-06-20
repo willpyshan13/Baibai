@@ -82,4 +82,22 @@
     <string name="no_contain_money">不含运费</string>
     <string name="calculate">结算</string>
     <string name="shopping_car">购物车</string>
+
+    <string name="order_detail">订单详情</string>
+    <string name="pay_qqwallet">QQ钱包</string>
+    <string name="pay_alipay">支付宝</string>
+    <string name="pay_wechat">微信支付</string>
+    <string name="pay_money">支付金额</string>
+    <string name="pay_online">在线支付</string>
+    <string name="pay_confrim">确认支付</string>
+    <string name="title_activity_setting">设置界面</string>
+    <string name="common_username">用户名</string>
+    <string name="common_userhead">头像</string>
+    <string name="common_nickname">昵称</string>
+    <string name="common_sex">性别</string>
+    <string name="my_order_address">我的收获地址</string>
+    <string name="title_setting">设置</string>
+    <string name="modify_nickname">昵称修改</string>
+    <string name="modify_username">用户名修改</string>
+    <string name="modify_sex">性别修改</string>
 </resources>

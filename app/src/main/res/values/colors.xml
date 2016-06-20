@@ -36,4 +36,8 @@
     <color name="mine_background_gray">#f0f0f0</color>
     <color name="shopping_btn">#ff5500</color>
     <color name="search_result_price">#c16234</color>
+    <color name="pay_gray_background">#eeeeee</color>
+    <color name="pay_gray_confirm">#4cd964</color>
+    <color name="pay_gray_confirm_gray">#787D83</color>
+
 </resources>
