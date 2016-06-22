@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/icon_aliPay"/>
+                android:src="@drawable/icon_alipay"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/icon_weChatPay"/>
+                android:src="@drawable/icon_wechatpay"/>
 
             <TextView
                 android:layout_width="wrap_content"

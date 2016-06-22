@@ -28,7 +28,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         initView();
         initTabhost();
@@ -38,7 +38,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
     private void initView() {
         ScreenProperties.initScreenProperties(this);
-
+        findViewById(R.id.main_tv_location).setOnClickListener(this);
         findViewById(id.main_tv_point).setOnClickListener(this);
         findViewById(id.main_tab_home).setOnClickListener(this);
         findViewById(id.main_tab_current_position).setOnClickListener(this);
@@ -87,6 +87,9 @@ public class MainActivity extends TabActivity implements OnClickListener {
                     getTabHost().setCurrentTabByTag(MINE);
                 else
                     startLoginActivity();
+                break;
+            case R.id.main_tv_location:
+                MainActivity.this.startActivity(new Intent(MainActivity.this,CitySelectActivity.class));
                 break;
         }
 
