@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pay_gray_background"
+    android:orientation="vertical"
+    tools:context="com.baibai.view.TheMoneyGoingActivity">
+
+    <include layout="@layout/layout_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/content_padding">
+
+        <TextView
+            android:id="@+id/money_goint_tv_where"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退回微信钱包(2016-05-16 18:49:39)"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/money_goint_tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="$18.9"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/search_result_price" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:padding="@dimen/content_padding">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_custom" />
+
+        <TextView
+            android:id="@+id/money_goint_tv_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_padding_left"
+            android:text="@string/money_going_question"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+    </LinearLayout>
+</LinearLayout>

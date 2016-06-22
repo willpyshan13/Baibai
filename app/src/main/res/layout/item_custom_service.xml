@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pay_gray_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/content_padding">
+
+        <ImageView
+            android:id="@+id/item_custom_service_snack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_snacks" />
+
+        <TextView
+            android:id="@+id/item_custom_service_orderStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_padding_left"
+            android:layout_toRightOf="@+id/item_custom_service_snack"
+            android:drawableRight="@drawable/icon_arror_right"
+            android:text="京东商城"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/item_custom_service_tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="退款成功"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/search_result_price" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/content_padding">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/carrefour" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/content_padding_left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_custom_service_tv_order_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="2"
+                android:text="哗啦世纪东方讲啊收到了放假啦圣诞节拉见识到了法律的书法家卡迪夫拉克丝打飞机快乐大"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/item_custom_service_tv_order_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingTop="@dimen/content_padding_top"
+                android:text="X1"
+                android:textAppearance="?android:textAppearanceMedium" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@android:color/white"
+        android:paddingRight="@dimen/content_padding_right">
+
+        <Button
+            android:id="@+id/custom_service_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/money_going"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/search_result_price" />
+    </RelativeLayout>
+</LinearLayout>

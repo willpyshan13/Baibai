@@ -100,4 +100,8 @@
     <string name="modify_nickname">昵称修改</string>
     <string name="modify_username">用户名修改</string>
     <string name="modify_sex">性别修改</string>
+
+    <string name="money_going">欠款去向</string>
+    <string name="money_going_question">遇到问题?</string>
+    <string name="money_going_click_check">点此查看</string>
 </resources>
