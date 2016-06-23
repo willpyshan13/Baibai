@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.baibai.view.GiftListActivity"
-    tools:showIn="@layout/activity_gift_list">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <include layout="@layout/layout_title" />
+    <include layout="@layout/layout_title"/>
 
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
         android:id="@+id/scrollView1"
@@ -23,20 +20,20 @@
             <com.jude.rollviewpager.RollPagerView
                 android:id="@+id/gift_list_rollpagerview"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                app:rollviewpager_play_delay="3000" />
+                android:layout_height="150dp"
+                app:rollviewpager_play_delay="3000"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/icon_gift_small"
-                android:text="@string/title_activity_gift_list" />
+                android:text="@string/title_activity_gift_list"/>
 
-            <GridView
+            <com.baibai.widget.CommonGridview
                 android:id="@+id/gift_list_gv"
-                android:numColumns="2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:numColumns="2"/>
         </LinearLayout>
     </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 </LinearLayout>

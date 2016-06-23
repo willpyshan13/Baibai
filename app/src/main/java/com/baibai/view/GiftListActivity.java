@@ -20,7 +20,7 @@ import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class GiftListActivity extends AppCompatActivity {
+public class GiftListActivity extends BaseActivity {
     private RollPagerView mRollViewPager;
     private ImageLoader imageLoader;
     private GridView mGiftList;
@@ -28,19 +28,25 @@ public class GiftListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gift_list);
+        setContentView(R.layout.content_gift_list);
 
         initView();
     }
 
     private void initView() {
+        setCenterText(R.string.point_quick_check_all);
+        setRightBtnVisible(View.GONE);
+        setLeftText("");
+        setLeftBtnOnclick();
+
         GiftListAdpater giftAdapter = new GiftListAdpater();
         mGiftList = (GridView) findViewById(R.id.gift_list_gv);
         mGiftList.setAdapter(giftAdapter);
         initViewPagerBound();
         imageLoader = ImageLoader.getInstance();
+
         mGiftList = (GridView) findViewById(R.id.gift_list_gv);
-        mRollViewPager = (RollPagerView) findViewById(R.id.roll_view_pager);
+        mRollViewPager = (RollPagerView) findViewById(R.id.gift_list_rollpagerview);
         //设置播放时间间隔
         mRollViewPager.setPlayDelay(2000);
         //设置透明度
@@ -111,7 +117,18 @@ public class GiftListActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            return null;
+            ViewHolder viewHolder;
+            if (convertView==null){
+                viewHolder = new ViewHolder();
+                convertView = getLayoutInflater().inflate(R.layout.item_gitf_list,null);
+                convertView.setTag(viewHolder);
+            }else{
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
+            return convertView;
+        }
+        class ViewHolder{
+
         }
     }
 }
