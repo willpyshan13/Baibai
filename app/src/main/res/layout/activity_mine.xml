@@ -36,6 +36,7 @@
         android:orientation="vertical" >
 
         <RelativeLayout
+            android:id="@+id/mine_rl_shopping_car"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -73,6 +74,7 @@
             android:background="@android:color/transparent" />
 
         <RelativeLayout
+            android:id="@+id/mine_rl_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -104,6 +106,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/mine_rl_favorite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -141,6 +144,7 @@
             android:background="@android:color/transparent" />
 
         <RelativeLayout
+            android:id="@+id/mine_rl_order_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -172,6 +176,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/mine_rl_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

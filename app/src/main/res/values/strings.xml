@@ -82,7 +82,7 @@
     <string name="no_contain_money">不含运费</string>
     <string name="calculate">结算</string>
     <string name="shopping_car">购物车</string>
-
+    <string name="my_order">我的订单</string>
     <string name="order_detail">订单详情</string>
     <string name="pay_qqwallet">QQ钱包</string>
     <string name="pay_alipay">支付宝</string>

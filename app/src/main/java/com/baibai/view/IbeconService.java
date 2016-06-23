@@ -150,6 +150,7 @@ public class IbeconService extends Service {
 
     protected void showBLEDialog() {
         Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        enableIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.startActivity(enableIntent);
     }
 

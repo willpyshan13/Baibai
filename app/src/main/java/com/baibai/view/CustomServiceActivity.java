@@ -25,7 +25,7 @@ public class CustomServiceActivity extends BaseActivity {
         setRightBtnVisible(View.GONE);
         setLeftBtnOnclick();
         setLeftText("");
-        setCenterText(R.string.title_activity_setting);
+        setCenterText(R.string.my_order);
 
         mCustomServiceLv = (ListView) findViewById(R.id.custom_service_lv);
         CustomServiceAdapter adapter = new CustomServiceAdapter();

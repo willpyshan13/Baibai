@@ -27,6 +27,7 @@ public class AddressManagerActivity extends BaseActivity {
     }
 
     private void initView() {
+        setRightBtnVisible(View.GONE);
         setLeftBtnOnclick();
         setLeftText("");
         setCenterText(R.string.title_activity_address_manager);
@@ -52,7 +53,7 @@ public class AddressManagerActivity extends BaseActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 6;
         }
 
         @Override

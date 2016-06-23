@@ -152,6 +152,8 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (data == null)
+            return;
         switch (requestCode) {
             // 如果是直接从相册获取
             case PHOTOZOOMQUESTCODE:
