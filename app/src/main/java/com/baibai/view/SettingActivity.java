@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baibai.R;
+import com.baibai.tools.LoginCacheUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -45,6 +46,11 @@ public class SettingActivity extends BaseActivity {
         mTvNickname = (TextView) findViewById(R.id.setting_tv_nickname);
         mTvSex = (TextView) findViewById(R.id.setting_tv_sex);
 
+        mTvUsername.setText(LoginCacheUtils.userPhone);
+        mTvNickname.setText(LoginCacheUtils.nickName);
+        mTvSex.setText(LoginCacheUtils.getGender());
+
+        findViewById(R.id.setting_rl_address).setOnClickListener(this);
         mTvUsername.setOnClickListener(this);
         mTvNickname.setOnClickListener(this);
         mTvSex.setOnClickListener(this);
@@ -97,13 +103,16 @@ public class SettingActivity extends BaseActivity {
                 showPhtoes();
                 break;
             case R.id.setting_tv_username:
-                startActivity(getIntent(ModifyUserInfoActivity.MODIFY_TYPE_USERNAME));
+//                startActivity(getIntent(ModifyUserInfoActivity.MODIFY_TYPE_USERNAME));
                 break;
             case R.id.setting_tv_nickname:
                 startActivity(getIntent(ModifyUserInfoActivity.MODIFY_TYPE_NICKNAME));
                 break;
             case R.id.setting_tv_sex:
                 startActivity(getIntent(ModifyUserInfoActivity.MODIFY_TYPE_SEX));
+                break;
+            case R.id.setting_rl_address:
+                startActivity(new Intent(SettingActivity.this, AddressManagerActivity.class));
                 break;
         }
     }

@@ -26,7 +26,7 @@
                 style="@style/HomeTopButton"
                 android:layout_centerInParent="true"
                 android:drawableLeft="@drawable/icon_point"
-                android:text="3234234" />
+                android:text="0" />
 
             <TextView
                 android:id="@+id/main_tv_search"

@@ -38,10 +38,12 @@ public class LoginOrRegisterActivity extends BaseActivity {
             case R.id.login_register_btn_login:
                 Intent loginIntent = new Intent(LoginOrRegisterActivity.this, LoginActivity.class);
                 LoginOrRegisterActivity.this.startActivity(loginIntent);
+                finish();
                 break;
             case R.id.login_register_btn_register:
                 Intent registerIntent = new Intent(LoginOrRegisterActivity.this, RegisterActivity.class);
                 LoginOrRegisterActivity.this.startActivity(registerIntent);
+                finish();
                 break;
         }
     }

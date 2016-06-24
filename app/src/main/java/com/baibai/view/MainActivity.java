@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 public class MainActivity extends TabActivity implements OnClickListener {
     private final String HOME = "home";
@@ -34,6 +35,13 @@ public class MainActivity extends TabActivity implements OnClickListener {
         initTabhost();
 
         startService(new Intent(this, IbeconService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (LoginCacheUtils.isLogin())
+            ((TextView) findViewById(id.main_tv_point)).setText("  " + LoginCacheUtils.userScore);
     }
 
     private void initView() {
@@ -64,8 +72,12 @@ public class MainActivity extends TabActivity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case id.main_tv_point:
-                Intent pointIntent = new Intent(MainActivity.this,CreditLifeActivity.class);
-                MainActivity.this.startActivity(pointIntent);
+                if (LoginCacheUtils.isLogin()) {
+                    Intent pointIntent = new Intent(MainActivity.this, CreditLifeActivity.class);
+                    MainActivity.this.startActivity(pointIntent);
+                } else {
+                    startLoginActivity();
+                }
                 break;
             case id.main_tab_home:
                 getTabHost().setCurrentTabByTag(HOME);
@@ -89,7 +101,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
                     startLoginActivity();
                 break;
             case R.id.main_tv_location:
-                MainActivity.this.startActivity(new Intent(MainActivity.this,CitySelectActivity.class));
+                MainActivity.this.startActivity(new Intent(MainActivity.this, CitySelectActivity.class));
                 break;
         }
 

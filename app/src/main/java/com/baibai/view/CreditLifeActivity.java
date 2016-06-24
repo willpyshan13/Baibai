@@ -1,16 +1,29 @@
 package com.baibai.view;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.baibai.R;
+import com.baibai.tools.Logger;
+import com.baibai.tools.LoginCacheUtils;
+import com.baibai.tools.RequestRul;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.AbsoluteSizeSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class CreditLifeActivity extends BaseActivity {
+    private static final String TAG = "CreditLifeActivity";
     private TextView mTvPoint, mTvLess;
     private SpannableStringBuilder mSpannerString;
 
@@ -22,9 +35,6 @@ public class CreditLifeActivity extends BaseActivity {
     }
 
     private void initView() {
-        mSpannerString = new SpannableStringBuilder();
-        mSpannerString.append("您还差1200\n积分可换购礼品");
-        mSpannerString.setSpan(new AbsoluteSizeSpan(80), 3, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         setRightBtnVisible(View.GONE);
         setLeftBtnOnclick();
         setLeftText("");
@@ -32,10 +42,47 @@ public class CreditLifeActivity extends BaseActivity {
         mTvPoint = (TextView) findViewById(R.id.credit_tv_point);
         mTvLess = (TextView) findViewById(R.id.credit_tv_less);
         ((TextView) findViewById(R.id.credit_tv_question)).setText("?");
+        mSpannerString = new SpannableStringBuilder();
+        mSpannerString.append("您还差\n积分可换购礼品");
+//        mSpannerString.setSpan(new AbsoluteSizeSpan(80), 3, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         mTvLess.setText(mSpannerString);
         findViewById(R.id.credit_rl_qiuck).setOnClickListener(this);
         findViewById(R.id.credit_rl_check_all).setOnClickListener(this);
+
+        processGetPasscode();
     }
+
+    public void processGetPasscode() {
+        final JSONObject jsonObject = new JSONObject();
+        Logger.e(this,""+RequestRul.GETUSERSCORE + LoginCacheUtils.TOKEN);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestRul.GETUSERSCORE + LoginCacheUtils.TOKEN, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Logger.e(this, response.toString() + "  " + response.optString("data") + "  " + response.optString("result"));
+                try {
+                    JSONObject jsonObject1 = new JSONObject(response.optString("data"));
+
+                    String leftScore = jsonObject1.optString("leftScore");
+                    LoginCacheUtils.userScore = jsonObject1.optString("userScore");
+                    mTvPoint.setText(LoginCacheUtils.userScore+"");
+                    mSpannerString = new SpannableStringBuilder();
+                    mSpannerString.append("您还差" + leftScore + "\n积分可换购礼品");
+                    mSpannerString.setSpan(new AbsoluteSizeSpan(80), 3, 3 + leftScore.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    mTvLess.setText(mSpannerString);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        getBaseRequest().add(jsonObjectRequest);
+    }
+
 
     @Override
     public void onClick(View v) {
