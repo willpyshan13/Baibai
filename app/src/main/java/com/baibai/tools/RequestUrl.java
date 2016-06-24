@@ -3,8 +3,8 @@ package com.baibai.tools;
 /**
  * Created by will on 16/6/10.
  */
-public class RequestRul {
-    private static final String TAG = "RequestRul";
+public class RequestUrl {
+    private static final String TAG = "RequestUrl";
 
     private static final String BASE_REQUSET_PATH = "http://211.149.207.251:8080/eMallRM/webservice/";
 
@@ -15,6 +15,10 @@ public class RequestRul {
     public static final String GETBANNERLIST = BASE_REQUSET_PATH +"goods/getBannerList";
     public static final String GETCLAZZLIST = BASE_REQUSET_PATH +"goods/getClazzList";
     public static final String GETGOODSPAGE = BASE_REQUSET_PATH +"goods/getGoodsPage";
+    public static final String GETGOODSDETAIL = BASE_REQUSET_PATH +"goods/getGoodsDetail";
+    public static final String GETADDRLIST = BASE_REQUSET_PATH +"address/getAddrList?token=";
+    public static final String ADDADDR = BASE_REQUSET_PATH +"address/addAddr?token=";
+    public static final String DELADDR = BASE_REQUSET_PATH +"address/delAddr?token=";
 
     public static final String FORGETPWD = BASE_REQUSET_PATH + "user/forgetPwd";
     public static final String CHANGEPWD = BASE_REQUSET_PATH + "user/changePwd?token=";

@@ -1,7 +1,6 @@
 package com.baibai.view;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,27 +10,19 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.baibai.R;
 import com.baibai.tools.CommonConstans;
 import com.baibai.tools.LoginCacheUtils;
 import com.baibai.tools.MD5Utils;
-import com.baibai.tools.RequestRul;
+import com.baibai.tools.RequestUrl;
 import com.baibai.tools.SharePreferenceUtil;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by will on 16/6/2.
@@ -117,7 +108,7 @@ public class LoginActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestRul.USERLOGIN, jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestUrl.USERLOGIN, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e(TAG, response.toString() + "  " + response.optString("data") + "  " + response.optString("result"));

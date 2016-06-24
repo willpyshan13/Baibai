@@ -105,5 +105,8 @@
     <string name="money_going_question">遇到问题?</string>
     <string name="money_going_click_check">点此查看</string>
     <string name="current_city">当前城市</string>
+    <string name="add_to_shoppingcar">加入购物车</string>
+    <string name="buy_now">立即购买</string>
+    <string name="into_shop">进入超市</string>
 
 </resources>

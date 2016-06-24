@@ -46,6 +46,7 @@ public class MainActivity extends TabActivity implements OnClickListener {
 
     private void initView() {
         ScreenProperties.initScreenProperties(this);
+        findViewById(R.id.main_tv_search).setOnClickListener(this);
         findViewById(R.id.main_tv_location).setOnClickListener(this);
         findViewById(id.main_tv_point).setOnClickListener(this);
         findViewById(id.main_tab_home).setOnClickListener(this);
@@ -102,6 +103,9 @@ public class MainActivity extends TabActivity implements OnClickListener {
                 break;
             case R.id.main_tv_location:
                 MainActivity.this.startActivity(new Intent(MainActivity.this, CitySelectActivity.class));
+                break;
+            case R.id.main_tv_search:
+                MainActivity.this.startActivity(new Intent(MainActivity.this, SearchGoodsActivity.class));
                 break;
         }
 

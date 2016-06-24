@@ -1,291 +1,346 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/pay_gray_background"
     tools:context="com.baibai.view.GoodsDetailActivity">
 
-    <ImageView
-        android:id="@+id/goods_detail_iv"
-        android:layout_width="match_parent"
-        android:layout_height="150dp" />
+    <include
+        android:id="@+id/goode_detail_title"
+        layout="@layout/layout_title" />
 
     <LinearLayout
+        android:id="@+id/goode_detail_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="价格" />
+            android:layout_weight="1"
+            android:background="@color/seekbar_progress"
+            android:text="@string/add_to_shoppingcar"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@android:color/white" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="￥19.9"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="@color/home_goods_distance" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="原价" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="29.9"
-            android:textAppearance="?android:textAppearanceMedium" />
-
+            android:layout_weight="1"
+            android:background="@color/search_result_price"
+            android:text="@string/buy_now"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/goode_detail_sv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_above="@id/goode_detail_bottom"
+        android:layout_below="@+id/goode_detail_title">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="剩余量：" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="29.9"
-            android:textAppearance="?android:textAppearanceMedium" />
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/goods_detail_iv"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="3dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="购买数量" />
+            <RelativeLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="29.9"
-            android:textAppearance="?android:textAppearanceMedium" />
+                <TextView
+                    android:id="@+id/goode_detail_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:ellipsize="end"
+                    android:ems="13"
+                    android:lines="2"
+                    android:text="feis"
+                    android:textAppearance="?android:textAppearanceMedium" />
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_collect_love" />
+            </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="折扣时间：" />
+                <TextView
+                    style="@style/GoodsDetailText"
+                    android:text="价格" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="2016.05.01--2016.05.30"
-            android:textAppearance="?android:textAppearanceMedium" />
+                <TextView
+                    android:id="@+id/goode_detail_tv_price"
+                    style="@style/GoodsDetailText"
+                    android:text="￥19.9"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="@color/home_goods_distance" />
 
-    </LinearLayout>
+                <TextView
+                    style="@style/GoodsDetailText"
+                    android:text="原价" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/goode_detail_tv_pre_price"
+                    style="@style/GoodsDetailText"
+                    android:text="29.9"
+                    android:textAppearance="?android:textAppearanceMedium" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="商品评价(2555)" />
-    </RelativeLayout>
+            </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:text="商品参数" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="包装方式" />
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="剩余量：" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:text="小包式"
-            android:textAppearance="?android:textAppearanceMedium" />
+                <TextView
+                    android:id="@+id/goode_detail_tv_stockcount"
+                    style="@style/GoodsDetailTextEms"
+                    android:text="29.9"
+                    android:textAppearance="?android:textAppearanceMedium" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="品牌" />
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:text="Vinda/维达"
-            android:textAppearance="?android:textAppearanceMedium" />
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="购买数量" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="29.9"
+                    android:textAppearance="?android:textAppearanceMedium" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="型号" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:text="V0012-4A"
-            android:textAppearance="?android:textAppearanceMedium" />
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="折扣时间：" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="是否有香味" />
+                <TextView
+                    android:id="@+id/goode_detail_tv_dicount_time"
+                    style="@style/GoodsDetailText"
+                    android:text="2016.05.01--2016.05.30"
+                    android:textAppearance="?android:textAppearanceMedium" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:text="加香"
-            android:textAppearance="?android:textAppearanceMedium" />
+            </LinearLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <RelativeLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="是否量贩装" />
+                <TextView
+                    android:id="@+id/goode_detail_tv_commount"
+                    style="@style/GoodsDetailTextEms"
+                    android:text="商品评价(2555)" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:text="否"
-            android:textAppearance="?android:textAppearanceMedium" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_arror_right" />
+            </RelativeLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <TextView
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="商品参数"
+                android:textAppearance="?android:textAppearanceMedium" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="片数" />
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:text="10片"
-            android:textAppearance="?android:textAppearanceMedium" />
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="包装方式" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/goode_detail_tv_package_type"
+                    style="@style/GoodsDetailTextEms"
+                    android:text="小包式"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="尺寸" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:text="210mmX210mm"
-            android:textAppearance="?android:textAppearanceMedium" />
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="品牌" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:text="层数" />
+                <TextView
+                    android:id="@+id/goode_detail_tv_band"
+                    style="@style/GoodsDetailTextEms"
+                    android:text="Vinda/维达"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:text="3层"
-            android:textAppearance="?android:textAppearanceMedium" />
+            </LinearLayout>
 
-    </LinearLayout>
-</LinearLayout>
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="型号" />
+
+                <TextView
+                    android:id="@+id/goode_detail_tv_type"
+                    style="@style/GoodsDetailTextEms"
+                    android:text="V0012-4A"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="是否有香味" />
+
+                <TextView
+                    android:id="@+id/goode_detail_tv_smale"
+                    style="@style/GoodsDetailTextEms"
+                    android:text="加香"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="是否量贩装" />
+
+                <TextView
+                    android:id="@+id/goode_detail_tv_sale_package"
+                    style="@style/GoodsDetailTextEms"
+                    android:text="否"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    style="@style/GoodsDetailTextEms"
+                    android:text="片数" />
+
+                <TextView
+                    android:id="@+id/goode_detail_tv_piece"
+                    style="@style/GoodsDetailTextEms"
+                    android:text="10片"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="尺寸" />
+
+                <TextView
+                    android:id="@+id/goode_detail_tv_size"
+                    style="@style/GoodsDetailText"
+                    android:text="210mmX210mm"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/GoodsDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/GoodsDetailTextEms"
+                    android:text="层数" />
+
+                <TextView
+                    android:id="@+id/goode_detail_tv_layer"
+                    style="@style/GoodsDetailTextEms"
+                    android:text="3层"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

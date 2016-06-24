@@ -13,8 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.baibai.R;
 import com.baibai.tools.LoginCacheUtils;
-import com.baibai.tools.MD5Utils;
-import com.baibai.tools.RequestRul;
+import com.baibai.tools.RequestUrl;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -74,7 +73,7 @@ public class ModifyUserInfoActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestRul.USERREGISTER, jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestUrl.USERREGISTER, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e(TAG, response.toString() + "  " + response.optString("data") + "  " + response.optString("result"));

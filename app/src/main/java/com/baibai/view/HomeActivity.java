@@ -7,7 +7,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.baibai.R;
 import com.baibai.bean.GoodsBean;
 import com.baibai.bean.GoodsListBean;
-import com.baibai.tools.RequestRul;
+import com.baibai.tools.RequestUrl;
 import com.baibai.tools.ScreenProperties;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -15,8 +15,8 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -25,6 +25,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -47,12 +48,11 @@ import java.util.List;
  * @ModifiedDate: 2016年6月1日 上午9:17:44
  * @Modified: TODO(用一句话描述该文件做什么)
  */
-public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRefreshListener2 {
+public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRefreshListener2, AdapterView.OnItemClickListener {
     private static final String TAG = "baibai_HomeActivity";
     private ListView mGoodsLv;
     private PullToRefreshScrollView mPulltoRefreshScorllView;
     private RollPagerView mRollViewPager;
-    ImageLoader imageLoader;
     private PagerRecycleAdapter mAdapter;
     private GoodsAdapter adapter;
     private Button mBtnDistance, mBtnPrice, mBtnDiscount, mBtnSort;
@@ -98,8 +98,8 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
         mBtnDiscount.setOnClickListener(this);
         mBtnSort.setOnClickListener(this);
 
-        imageLoader = ImageLoader.getInstance();
         mGoodsLv = (ListView) findViewById(R.id.home_lv);
+        mGoodsLv.setOnItemClickListener(this);
         mPulltoRefreshScorllView = (PullToRefreshScrollView) findViewById(R.id.scrollView1);
         mPulltoRefreshScorllView.setMode(PullToRefreshBase.Mode.BOTH);
         mPulltoRefreshScorllView.setOnRefreshListener(this);
@@ -120,6 +120,7 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
 //        设置文字指示器
 //        隐藏指示器
         mRollViewPager.setHintView(new ColorPointHintView(this, Color.YELLOW, Color.WHITE));
+
     }
 
     @Override
@@ -183,7 +184,7 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
             @Override
             public void run() {
                 final JSONObject jsonObject = new JSONObject();
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestRul.GETBANNERLIST, jsonObject, new Response.Listener<JSONObject>() {
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestUrl.GETBANNERLIST, jsonObject, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
 //                Logger.e(this, response.toString() + "  " + response.optString("data") + "  " + response.optString("result"));
@@ -212,7 +213,7 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
             @Override
             public void run() {
                 final JSONObject jsonObject = new JSONObject();
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestRul.GETCLAZZLIST, jsonObject, new Response.Listener<JSONObject>() {
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestUrl.GETCLAZZLIST, jsonObject, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
 //                Logger.e(this, response.toString() + "  " + response.optString("data") + "  " + response.optString("result"));
@@ -250,7 +251,7 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestRul.GETGOODSPAGE, jsonObject, new Response.Listener<JSONObject>() {
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestUrl.GETGOODSPAGE, jsonObject, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
 //                Logger.e(this, response.toString() + "  " + response.optString("data") + "  " + response.optString("result"));
@@ -295,7 +296,7 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-
+        mPulltoRefreshScorllView.onRefreshComplete();
     }
 
     @Override
@@ -303,18 +304,31 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
         processGetGoodssList(currentIndex++, pageSize, currentSelect, false);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        startActivity(new Intent(HomeActivity.this, GoodsDetailActivity.class).putExtra(GoodsDetailActivity.extraGoodeId, mGoodsList.get(position).goodsId));
+    }
+
     private class PagerRecycleAdapter extends StaticPagerAdapter {
 
         @Override
-        public View getView(ViewGroup container, int position) {
+        public View getView(ViewGroup container, final int position) {
             ImageView view = new ImageView(container.getContext());
+
             try {
                 imageLoader.displayImage(mBannerJsonArray.getJSONObject(position).optString("bannerImg"), view);
+                String goodsId = mBannerJsonArray.getJSONObject(position).optString("bannerImg");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             view.setScaleType(ImageView.ScaleType.CENTER_CROP);
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(HomeActivity.this, GoodsDetailActivity.class).putExtra(GoodsDetailActivity.extraGoodeId, ""));
+                }
+            });
             return view;
         }
 
@@ -380,7 +394,7 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
                 holder.goodsprePrice.setText("￥" + mGoodsList.get(position).marketPrice + "元");
 //                holder.goodsContent.setText(mGoodsListArray.getJSONObject(position).optString("marketName"));
             }
-            holder.goodsPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.goodsprePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
             return convertView;
         }

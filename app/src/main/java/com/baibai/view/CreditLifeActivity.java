@@ -7,17 +7,15 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.baibai.R;
 import com.baibai.tools.Logger;
 import com.baibai.tools.LoginCacheUtils;
-import com.baibai.tools.RequestRul;
+import com.baibai.tools.RequestUrl;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.AbsoluteSizeSpan;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,8 +52,8 @@ public class CreditLifeActivity extends BaseActivity {
 
     public void processGetPasscode() {
         final JSONObject jsonObject = new JSONObject();
-        Logger.e(this,""+RequestRul.GETUSERSCORE + LoginCacheUtils.TOKEN);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestRul.GETUSERSCORE + LoginCacheUtils.TOKEN, jsonObject, new Response.Listener<JSONObject>() {
+        Logger.e(this,""+ RequestUrl.GETUSERSCORE + LoginCacheUtils.TOKEN);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestUrl.GETUSERSCORE + LoginCacheUtils.TOKEN, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Logger.e(this, response.toString() + "  " + response.optString("data") + "  " + response.optString("result"));

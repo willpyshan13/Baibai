@@ -9,4 +9,8 @@
     <dimen name="content_padding_top">15dp</dimen>
     <dimen name="content_padding_right">15dp</dimen>
     <dimen name="content_padding_bottom">15dp</dimen>
+    <dimen name="padding_top_3dp">3dp</dimen>
+    <dimen name="goods_detail_padding">10dp</dimen>
+    <dimen name="goods_detail_margin_left">10dp</dimen>
+    <integer name="goode_detail_ems">6</integer>
 </resources>

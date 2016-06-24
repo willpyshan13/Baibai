@@ -37,13 +37,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_top_3dp">
 
         <CheckBox
             android:id="@+id/address_manager_cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/default_address" />
+            android:text="@string/default_address"
+            android:textColor="@color/search_result_price" />
 
         <TextView
             android:id="@+id/address_manager_tv_delete"

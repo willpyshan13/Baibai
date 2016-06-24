@@ -1,6 +1,7 @@
 package com.baibai.view;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -8,6 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.baibai.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * @author will
@@ -19,10 +21,16 @@ import com.baibai.R;
  */
 public class BaseActivity extends Activity implements View.OnClickListener {
     private static final String TAG = "baibai_BaseActivity";
-
+    ImageLoader imageLoader;
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        imageLoader = ImageLoader.getInstance();
     }
 
     public void setLeftBtnVisible(int flag){
