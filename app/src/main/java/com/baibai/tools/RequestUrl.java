@@ -20,6 +20,9 @@ public class RequestUrl {
     public static final String ADDADDR = BASE_REQUSET_PATH +"address/addAddr?token=";
     public static final String DELADDR = BASE_REQUSET_PATH +"address/delAddr?token=";
 
+    public static final String GETNEARESTLIST = BASE_REQUSET_PATH +"market/getNearestList";
+    public static final String GETEQUIPLIST = BASE_REQUSET_PATH +"market/getEquipList";
+
     public static final String FORGETPWD = BASE_REQUSET_PATH + "user/forgetPwd";
     public static final String CHANGEPWD = BASE_REQUSET_PATH + "user/changePwd?token=";
     public static final String FEEDBACK = BASE_REQUSET_PATH + "user/feedback?token=";

@@ -7,10 +7,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.baibai.R;
+import com.baibai.bean.MarketInfoReturn;
 import com.baibai.tools.ScreenProperties;
+import com.google.gson.Gson;
 
 /**
  * @author will
@@ -23,8 +26,10 @@ import com.baibai.tools.ScreenProperties;
 public class LocationStoreActivity extends BaseActivity {
     private static final String TAG = "baibai_LocationStoreActivity";
 
+    public static final String EXTRA_LOCATION = "extra_location";
     private ListView mStoreLv;
-
+    private String json;
+    private MarketInfoReturn info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +42,9 @@ public class LocationStoreActivity extends BaseActivity {
         setLeftBtnOnclick();
         setLeftText("");
         setCenterText(R.string.current_store);
-
+        json = getIntent().getExtras().getString(EXTRA_LOCATION);
+        Gson gson = new Gson();
+        info = gson.fromJson(json, MarketInfoReturn.class);
         mStoreLv = (ListView) findViewById(R.id.current_store_lv);
         StoreAdapter adapter = new StoreAdapter();
         mStoreLv.setAdapter(adapter);
@@ -47,7 +54,10 @@ public class LocationStoreActivity extends BaseActivity {
 
         @Override
         public int getCount() {
-            return 10;
+            if (info!=null&&info.data!=null)
+                return info.data.size();
+            else
+                return 0;
         }
 
         @Override
@@ -69,11 +79,15 @@ public class LocationStoreActivity extends BaseActivity {
                 holder.storeIcon = (ImageView) convertView.findViewById(R.id.item_current_store);
                 holder.storeName = (TextView) convertView.findViewById(R.id.item_current_tv_name);
                 holder.storeDistance = (TextView) convertView.findViewById(R.id.item_current_tv_distance);
+                holder.rating = (RatingBar) convertView.findViewById(R.id.ratingBar);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
             holder.storeIcon.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / 3, ScreenProperties.getScreenHeight() / 6));
+            holder.storeName.setText(info.data.get(position).marketName);
+            holder.rating.setRating(Float.parseFloat(info.data.get(position).marketStar));
+            imageLoader.displayImage(info.data.get(position).marketLogo,holder.storeIcon);
             return convertView;
         }
 
@@ -81,7 +95,7 @@ public class LocationStoreActivity extends BaseActivity {
             ImageView storeIcon;
             TextView storeName;
             TextView storeDistance;
-
+            RatingBar rating;
         }
     }
 }

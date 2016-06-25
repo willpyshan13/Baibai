@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.baibai.R;
 import com.baibai.widget.FlowLayout;
 
-public class SearchGoodsActivity extends AppCompatActivity {
+public class SearchGoodsActivity extends BaseActivity {
     private String mNames[] = {
             "welcome","android","TextView",
             "apple","jamy","kobe bryant",
