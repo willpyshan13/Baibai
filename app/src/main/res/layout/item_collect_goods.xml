@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content" >
 
                 <TextView
+                    android:id="@+id/item_collect_goods_storename"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="家乐福超市"
@@ -50,18 +51,20 @@
                 android:layout_marginTop="5dp" >
 
                 <TextView
+                    android:id="@+id/item_collect_goods_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ems="@integer/goode_detail_ems"
                     android:text="海飞丝"
                     android:textColor="@color/home_goods_price" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center"
-                    android:text="450ml"
-                    android:textColor="@color/home_goods_price" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="450ml"-->
+                    <!--android:textColor="@color/home_goods_price" />-->
             </LinearLayout>
 
             <LinearLayout
@@ -77,6 +80,7 @@
                     android:textColor="@color/home_goods_price" />
 
                 <TextView
+                    android:id="@+id/item_collect_goods_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"

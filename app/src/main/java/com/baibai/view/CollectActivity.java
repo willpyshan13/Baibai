@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -44,14 +45,16 @@ import java.util.List;
  * @ModifiedDate: 2016年6月1日 上午9:19:10
  * @Modified: TODO(用一句话描述该文件做什么)
  */
-public class CollectActivity extends BaseActivity implements PullToRefreshBase.OnRefreshListener2{
+public class CollectActivity extends BaseActivity implements PullToRefreshBase.OnRefreshListener2 {
     private static final String TAG = "baibai_CollectActivity";
     private PullToRefreshListView mStoreLv;
     private GoodsAdapter adapter;
     private List<CollectGoodsBean> collectGoodsBeanList;
     private List<CollectStoreBean> collectStoreBeanList;
 
-    private String currentType = "";
+    private Button mCollectGoods, mCollectStore;
+    private int currentType = 1, currentPage = 0, currrentPageSize = 15;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -60,12 +63,12 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
         initView();
     }
 
-    public void processgetAddrList(final int type) {
+    public void processgetAddrList(int page, int pageSize, final int type) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("attendType", "" + type);
-            jsonObject.put("pageIndex", 0);
-            jsonObject.put("pageSize", 15);
+            jsonObject.put("pageIndex", page);
+            jsonObject.put("pageSize", pageSize);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -73,6 +76,8 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
             @Override
             public void onResponse(JSONObject response) {
                 Logger.e(CollectActivity.this, response.toString());
+                if (mStoreLv.isRefreshing())
+                    mStoreLv.onRefreshComplete();
                 if (response.optString("result").equals("true")) {
                     if (type == CommonConstans.COLLECT_TYPE_STORE) {
                         CollectStoreReturn info = gson.fromJson(response.toString(), CollectStoreReturn.class);
@@ -97,23 +102,45 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
     }
 
     private void initView() {
+        mCollectGoods = (Button) findViewById(R.id.collect_btn_goods);
+        mCollectStore = (Button) findViewById(R.id.collect_btn_store);
+        mCollectGoods.setOnClickListener(this);
+        mCollectStore.setOnClickListener(this);
         mStoreLv = (PullToRefreshListView) findViewById(R.id.collect_lv);
         mStoreLv.setMode(PullToRefreshBase.Mode.BOTH);
         mStoreLv.setOnRefreshListener(this);
         adapter = new GoodsAdapter();
         mStoreLv.setAdapter(adapter);
 
-        processgetAddrList(CommonConstans.COLLECT_TYPE_STORE);
+        processgetAddrList(currentPage, currrentPageSize, CommonConstans.COLLECT_TYPE_STORE);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.collect_btn_goods:
+                currentType = CommonConstans.COLLECT_TYPE_GOODS;
+                currentPage = 0;
+                processgetAddrList(currentPage, currrentPageSize, currentType);
+                break;
+            case R.id.collect_btn_store:
+                currentPage = 0;
+                currentType = CommonConstans.COLLECT_TYPE_STORE;
+                processgetAddrList(currentPage, currrentPageSize, currentType);
+                break;
+
+        }
     }
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-
+        processgetAddrList(currentPage, currrentPageSize, currentType);
     }
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
-
+        currentPage++;
+        processgetAddrList(currentPage, currrentPageSize, currentType);
     }
 
     class GoodsAdapter extends BaseAdapter {
@@ -121,7 +148,9 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
         @Override
         public int getCount() {
             // TODO Auto-generated method stub
-            return 10;
+            if (collectGoodsBeanList != null)
+                return collectGoodsBeanList.size();
+            return 0;
         }
 
         @Override
@@ -144,12 +173,20 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
                 convertView = getLayoutInflater().inflate(R.layout.item_collect_goods, null);
                 holder.goodsIv = (ImageView) convertView.findViewById(R.id.collect_goods_iv_icon);
                 holder.goodsprePrice = (TextView) convertView.findViewById(R.id.collect_goods_tv_preprice);
+                holder.goodsPrice = (TextView) convertView.findViewById(R.id.item_collect_goods_price);
+                holder.shopName = (TextView) convertView.findViewById(R.id.item_collect_goods_storename);
+                holder.goodsName = (TextView) convertView.findViewById(R.id.item_collect_goods_name);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
             holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / 3, ScreenProperties.getScreenHeight() / 6));
             holder.goodsprePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            imageLoader.displayImage(collectGoodsBeanList.get(position).goodsThumb, holder.goodsIv);
+            holder.goodsName.setText(collectGoodsBeanList.get(position).goodsName);
+            holder.shopName.setText(collectGoodsBeanList.get(position).marketName);
+            holder.goodsPrice.setText("¥" + collectGoodsBeanList.get(position).mallPrice + "元");
+            holder.goodsprePrice.setText("¥" + collectGoodsBeanList.get(position).marketPrice + "元");
             return convertView;
         }
 
