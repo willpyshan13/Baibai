@@ -9,6 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.baibai.R;
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
@@ -22,6 +23,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class BaseActivity extends Activity implements View.OnClickListener {
     private static final String TAG = "baibai_BaseActivity";
     ImageLoader imageLoader;
+    Gson gson = new Gson();
     @Override
     public void onClick(View v) {
 

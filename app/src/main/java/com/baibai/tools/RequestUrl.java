@@ -22,6 +22,10 @@ public class RequestUrl {
 
     public static final String GETNEARESTLIST = BASE_REQUSET_PATH +"market/getNearestList";
     public static final String GETEQUIPLIST = BASE_REQUSET_PATH +"market/getEquipList";
+    public static final String GETMARKETLIST = BASE_REQUSET_PATH +"discover/getMarketList";
+    public static final String GETGOODSCLAZZLIST = BASE_REQUSET_PATH +"discover/getGoodsClazzList";
+
+    public static final String GETATTENDPAGE = BASE_REQUSET_PATH +"attend/getAttendPage?token=";
 
     public static final String FORGETPWD = BASE_REQUSET_PATH + "user/forgetPwd";
     public static final String CHANGEPWD = BASE_REQUSET_PATH + "user/changePwd?token=";

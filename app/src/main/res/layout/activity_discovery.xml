@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         style="@style/Width_wrap_height_wrap"
-        android:padding="5dp" >
+        android:padding="5dp">
 
         <TextView
             style="@style/Width_wrap_height_wrap"
@@ -29,13 +29,12 @@
     <GridView
         android:id="@+id/discovery_store_gv"
         style="@style/Width_match_height_wrap"
-        android:numColumns="3" >
-    </GridView>
+        android:numColumns="3"></GridView>
 
     <GridView
+        android:layout_margin="@dimen/content_padding"
         android:id="@+id/discovery_type_gv"
         style="@style/Width_match_height_wrap"
-        android:numColumns="4" >
-    </GridView>
+        android:numColumns="4"></GridView>
 
 </LinearLayout>

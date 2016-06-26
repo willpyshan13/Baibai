@@ -5,4 +5,6 @@ package com.baibai.tools;
  */
 public class CommonConstans {
     public static final String USERINFO = "baibai.userinfo";
+    public static final int COLLECT_TYPE_STORE=1;
+    public static final int COLLECT_TYPE_GOODS=2;
 }
