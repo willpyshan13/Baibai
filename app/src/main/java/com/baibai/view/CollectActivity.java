@@ -26,9 +26,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -49,11 +51,12 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
     private static final String TAG = "baibai_CollectActivity";
     private PullToRefreshListView mStoreLv;
     private GoodsAdapter adapter;
+    private StoreAdapter mStoreAdapter;
     private List<CollectGoodsBean> collectGoodsBeanList;
     private List<CollectStoreBean> collectStoreBeanList;
 
     private Button mCollectGoods, mCollectStore;
-    private int currentType = 1, currentPage = 0, currrentPageSize = 15;
+    private int currentType = 1, currentPage = 1, currrentPageSize = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,7 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
         initView();
     }
 
-    public void processgetAddrList(int page, int pageSize, final int type) {
+    public void processgetAddrList(int page, int pageSize, final int type, final boolean reset) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("attendType", "" + type);
@@ -72,7 +75,7 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestUrl.GETADDRLIST + LoginCacheUtils.TOKEN, jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RequestUrl.GETATTENDPAGE + LoginCacheUtils.TOKEN, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Logger.e(CollectActivity.this, response.toString());
@@ -82,13 +85,23 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
                     if (type == CommonConstans.COLLECT_TYPE_STORE) {
                         CollectStoreReturn info = gson.fromJson(response.toString(), CollectStoreReturn.class);
                         collectStoreBeanList = new ArrayList<CollectStoreBean>();
+                        if (reset) {
+                            collectStoreBeanList.clear();
+                            mStoreLv.setAdapter(mStoreAdapter);
+                        }
                         collectStoreBeanList.addAll(info.data);
+                        mStoreAdapter.notifyDataSetChanged();
                     } else {
                         CollectGoodsReturn info = gson.fromJson(response.toString(), CollectGoodsReturn.class);
                         collectGoodsBeanList = new ArrayList<CollectGoodsBean>();
+                        if (reset) {
+                            collectGoodsBeanList.clear();
+                            mStoreLv.setAdapter(adapter);
+                        }
                         collectGoodsBeanList.addAll(info.data);
+                        adapter.notifyDataSetChanged();
                     }
-                    adapter.notifyDataSetChanged();
+
                 }
             }
         }, new Response.ErrorListener() {
@@ -109,10 +122,11 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
         mStoreLv = (PullToRefreshListView) findViewById(R.id.collect_lv);
         mStoreLv.setMode(PullToRefreshBase.Mode.BOTH);
         mStoreLv.setOnRefreshListener(this);
+        mStoreAdapter = new StoreAdapter();
         adapter = new GoodsAdapter();
-        mStoreLv.setAdapter(adapter);
-
-        processgetAddrList(currentPage, currrentPageSize, CommonConstans.COLLECT_TYPE_STORE);
+//        mStoreLv.setAdapter(adapter);
+        mStoreLv.setAdapter(mStoreAdapter);
+        processgetAddrList(currentPage, currrentPageSize, CommonConstans.COLLECT_TYPE_STORE, false);
     }
 
     @Override
@@ -120,13 +134,13 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
         switch (v.getId()) {
             case R.id.collect_btn_goods:
                 currentType = CommonConstans.COLLECT_TYPE_GOODS;
-                currentPage = 0;
-                processgetAddrList(currentPage, currrentPageSize, currentType);
+                currentPage = 1;
+                processgetAddrList(currentPage, currrentPageSize, currentType, true);
                 break;
             case R.id.collect_btn_store:
-                currentPage = 0;
+                currentPage = 1;
                 currentType = CommonConstans.COLLECT_TYPE_STORE;
-                processgetAddrList(currentPage, currrentPageSize, currentType);
+                processgetAddrList(currentPage, currrentPageSize, currentType, true);
                 break;
 
         }
@@ -134,13 +148,13 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-        processgetAddrList(currentPage, currrentPageSize, currentType);
+        processgetAddrList(currentPage, currrentPageSize, currentType, true);
     }
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         currentPage++;
-        processgetAddrList(currentPage, currrentPageSize, currentType);
+        processgetAddrList(currentPage, currrentPageSize, currentType, false);
     }
 
     class GoodsAdapter extends BaseAdapter {
@@ -194,11 +208,66 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
             ImageView goodsIv;
             TextView shopName;
             TextView goodsName;
-            TextView goodsDiscount;
-            TextView goodsDistance;
             TextView goodsPrice;
             TextView goodsprePrice;
-            TextView goodsContent;
+        }
+
+    }
+
+    class StoreAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            if (collectStoreBeanList != null)
+                return collectStoreBeanList.size();
+            return 0;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            // TODO Auto-generated method stub
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                holder = new ViewHolder();
+                convertView = getLayoutInflater().inflate(R.layout.item_current_store, null);
+                holder.goodsIv = (ImageView) convertView.findViewById(R.id.item_current_store);
+                holder.shopName = (TextView) convertView.findViewById(R.id.item_current_tv_name);
+                holder.ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
+                holder.collect = (ImageButton) convertView.findViewById(R.id.item_current_store_iv_collect);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+            holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / 3, ScreenProperties.getScreenHeight() / 6));
+            imageLoader.displayImage(collectStoreBeanList.get(position).marketLogo, holder.goodsIv);
+            holder.shopName.setText(collectStoreBeanList.get(position).marketName);
+            holder.ratingBar.setRating(Float.parseFloat(collectStoreBeanList.get(position).marketStar));
+            holder.collect.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            return convertView;
+        }
+
+        class ViewHolder {
+            ImageView goodsIv;
+            TextView shopName;
+            RatingBar ratingBar;
+            ImageButton collect;
         }
 
     }
