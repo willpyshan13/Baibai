@@ -1,10 +1,12 @@
 package com.baibai.view;
 
 import com.baibai.R;
+import com.baibai.tools.LoginCacheUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * @author will
@@ -17,6 +19,8 @@ import android.view.View;
 public class MineActivity extends BaseActivity {
     private static final String TAG = "baibai_MineActivity";
 
+    private TextView mTvName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -26,7 +30,15 @@ public class MineActivity extends BaseActivity {
         initView();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTvName.setText(LoginCacheUtils.nickName);
+
+    }
+
     private void initView() {
+        mTvName = (TextView) findViewById(R.id.mine_tv_username);
         findViewById(R.id.mine_rl_order_address).setOnClickListener(this);
         findViewById(R.id.mine_rl_favorite).setOnClickListener(this);
         findViewById(R.id.mine_rl_order).setOnClickListener(this);

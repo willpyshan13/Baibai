@@ -18,6 +18,8 @@ import android.content.Intent;
 
 import java.io.File;
 
+import cn.sharesdk.framework.ShareSDK;
+
 /**
  * @author will
  * @Comments : TODO(用一句话描述该文件做什么)
@@ -35,6 +37,7 @@ public class BaibaiApplication extends Application {
         // TODO Auto-generated method stub
         super.onCreate();
         SDKInitializer.initialize(this);
+        ShareSDK.initSDK(this);
         imageLoaderConfig();
 
     }
