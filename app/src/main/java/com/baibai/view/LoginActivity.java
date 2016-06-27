@@ -20,14 +20,22 @@ import com.baibai.tools.LoginCacheUtils;
 import com.baibai.tools.MD5Utils;
 import com.baibai.tools.RequestUrl;
 import com.baibai.tools.SharePreferenceUtil;
+import com.mob.tools.utils.UIHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.tencent.qq.QQ;
+
 /**
  * Created by will on 16/6/2.
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements PlatformActionListener {
     private static final String TAG = "LoginActivity";
 
     private Button mLogin;
@@ -99,6 +107,27 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+    private void authorize(Platform plat) {
+        if (plat == null) {
+//            popupOthers();
+            return;
+        }
+        //判断指定平台是否已经完成授权
+        if (plat.isAuthValid()) {
+            String userId = plat.getDb().getUserId();
+            if (userId != null) {
+//                UIHandler.sendEmptyMessage(MSG_USERID_FOUND, this);
+//                login(plat.getName(), userId, null);
+                return;
+            }
+        }
+        plat.setPlatformActionListener(this);
+        // true不使用SSO授权，false使用SSO授权
+        plat.SSOSetting(true);
+        //获取用户资料
+        plat.showUser(null);
+    }
+
     public void processLogin() {
         final JSONObject jsonObject = new JSONObject();
         try {
@@ -139,5 +168,20 @@ public class LoginActivity extends BaseActivity {
         });
 
         getBaseRequest().add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+
+    }
+
+    @Override
+    public void onError(Platform platform, int i, Throwable throwable) {
+
+    }
+
+    @Override
+    public void onCancel(Platform platform, int i) {
+
     }
 }

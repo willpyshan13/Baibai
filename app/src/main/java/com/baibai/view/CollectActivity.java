@@ -9,14 +9,11 @@ import com.baibai.bean.CollectGoodsBean;
 import com.baibai.bean.CollectGoodsReturn;
 import com.baibai.bean.CollectStoreBean;
 import com.baibai.bean.CollectStoreReturn;
-import com.baibai.bean.DiscoveryBean;
-import com.baibai.bean.DiscoveryReturn;
 import com.baibai.tools.CommonConstans;
 import com.baibai.tools.Logger;
 import com.baibai.tools.LoginCacheUtils;
 import com.baibai.tools.RequestUrl;
 import com.baibai.tools.ScreenProperties;
-import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
@@ -29,7 +26,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -66,7 +62,7 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
         initView();
     }
 
-    public void processgetAddrList(int page, int pageSize, final int type, final boolean reset) {
+    public void processGetAttendList(int page, int pageSize, final int type, final boolean reset) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("attendType", "" + type);
@@ -126,7 +122,7 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
         adapter = new GoodsAdapter();
 //        mStoreLv.setAdapter(adapter);
         mStoreLv.setAdapter(mStoreAdapter);
-        processgetAddrList(currentPage, currrentPageSize, CommonConstans.COLLECT_TYPE_STORE, false);
+        processGetAttendList(currentPage, currrentPageSize, CommonConstans.COLLECT_TYPE_STORE, false);
     }
 
     @Override
@@ -135,12 +131,12 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
             case R.id.collect_btn_goods:
                 currentType = CommonConstans.COLLECT_TYPE_GOODS;
                 currentPage = 1;
-                processgetAddrList(currentPage, currrentPageSize, currentType, true);
+                processGetAttendList(currentPage, currrentPageSize, currentType, true);
                 break;
             case R.id.collect_btn_store:
                 currentPage = 1;
                 currentType = CommonConstans.COLLECT_TYPE_STORE;
-                processgetAddrList(currentPage, currrentPageSize, currentType, true);
+                processGetAttendList(currentPage, currrentPageSize, currentType, true);
                 break;
 
         }
@@ -148,13 +144,13 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
 
     @Override
     public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-        processgetAddrList(currentPage, currrentPageSize, currentType, true);
+        processGetAttendList(currentPage, currrentPageSize, currentType, true);
     }
 
     @Override
     public void onPullUpToRefresh(PullToRefreshBase refreshView) {
         currentPage++;
-        processgetAddrList(currentPage, currrentPageSize, currentType, false);
+        processGetAttendList(currentPage, currrentPageSize, currentType, false);
     }
 
     class GoodsAdapter extends BaseAdapter {
@@ -194,7 +190,7 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / 3, ScreenProperties.getScreenHeight() / 6));
+            holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / ScreenProperties.WIDTH_NUM, ScreenProperties.getScreenHeight() / ScreenProperties.HEIGHT_NUM));
             holder.goodsprePrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             imageLoader.displayImage(collectGoodsBeanList.get(position).goodsThumb, holder.goodsIv);
             holder.goodsName.setText(collectGoodsBeanList.get(position).goodsName);
@@ -250,7 +246,7 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / 3, ScreenProperties.getScreenHeight() / 6));
+            holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / ScreenProperties.WIDTH_NUM, ScreenProperties.getScreenHeight() / ScreenProperties.HEIGHT_NUM));
             imageLoader.displayImage(collectStoreBeanList.get(position).marketLogo, holder.goodsIv);
             holder.shopName.setText(collectStoreBeanList.get(position).marketName);
             holder.ratingBar.setRating(Float.parseFloat(collectStoreBeanList.get(position).marketStar));

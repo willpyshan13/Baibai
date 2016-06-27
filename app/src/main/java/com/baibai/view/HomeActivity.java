@@ -383,7 +383,7 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / 4, ScreenProperties.getScreenHeight() / 6));
+            holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / ScreenProperties.WIDTH_NUM, ScreenProperties.getScreenHeight() / ScreenProperties.HEIGHT_NUM));
             if (mGoodsList != null) {
                 imageLoader.displayImage(mGoodsList.get(position).goodsThumb, holder.goodsIv);
                 holder.goodsPrice.setText("￥" + mGoodsList.get(position).mallPrice + "元");

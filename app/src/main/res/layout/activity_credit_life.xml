@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/top_bar_background"
-                tools:context="com.baibai.view.CreditLifeActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/top_bar_background"
+    tools:context="com.baibai.view.CreditLifeActivity">
 
     <include
         android:id="@+id/credit_include"
-        layout="@layout/layout_title"/>
+        layout="@layout/layout_title" />
 
     <TextView
         android:id="@+id/credit_tv_point"
@@ -20,14 +20,13 @@
         android:drawableLeft="@drawable/icon_point"
         android:text="23232"
         android:textColor="@android:color/white"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/credit_tv_point"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/content_margin_top"
         android:background="@drawable/icon_circle"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -40,7 +39,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="63dp"
             android:text="您还差1200\n积分可换购礼品"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -51,14 +50,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/icon_gift"/>
+                android:src="@drawable/icon_gift" />
 
             <TextView
                 android:id="@+id/credit_tv_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:textSize="80dp"/>
+                android:textSize="80dp" />
         </FrameLayout>
     </LinearLayout>
 
@@ -73,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_margin="6dp"
-            android:background="@color/text_black"/>
+            android:background="@color/text_black" />
 
         <RelativeLayout
             android:id="@+id/credit_rl_qiuck"
@@ -89,7 +88,7 @@
                 android:drawableTop="@drawable/icon_point_way"
                 android:text="@string/point_quick_earn"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -97,19 +96,20 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/content_padding_right"
-                android:src="@drawable/icon_arror_right"/>
+                android:src="@drawable/icon_arror_right" />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_margin="6dp"
-            android:background="@color/text_black"/>
+            android:background="@color/text_black" />
 
         <RelativeLayout
             android:id="@+id/credit_rl_check_all"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/content_padding_bottom">
 
 
             <TextView
@@ -119,7 +119,7 @@
                 android:drawableTop="@drawable/icon_point_shopping"
                 android:text="@string/point_quick_check_all"
                 android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/content_padding_right"
-                android:src="@drawable/icon_arror_right"/>
+                android:src="@drawable/icon_arror_right" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/collect_goods_iv_icon"
@@ -17,16 +17,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="5"
-        android:paddingLeft="20dp" >
+        android:paddingLeft="20dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/item_collect_goods_storename"
@@ -48,29 +48,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" >
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/item_collect_goods_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="@integer/goode_detail_ems"
+                    android:ellipsize="end"
+                    android:ems="@integer/goods_list_name_ems"
+                    android:lines="2"
                     android:text="海飞丝"
                     android:textColor="@color/home_goods_price" />
 
                 <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginLeft="10dp"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="450ml"-->
-                    <!--android:textColor="@color/home_goods_price" />-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:gravity="center"-->
+                <!--android:text="450ml"-->
+                <!--android:textColor="@color/home_goods_price" />-->
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" >
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/collect_goods_tv_preprice"

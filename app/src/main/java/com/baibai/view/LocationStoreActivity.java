@@ -137,7 +137,7 @@ public class LocationStoreActivity extends BaseActivity {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-            holder.storeIcon.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / 3, ScreenProperties.getScreenHeight() / 6));
+            holder.storeIcon.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / ScreenProperties.WIDTH_NUM, ScreenProperties.getScreenHeight() / ScreenProperties.HEIGHT_NUM));
             holder.storeName.setText(info.data.get(position).marketName);
             holder.rating.setRating(Float.parseFloat(info.data.get(position).marketStar));
             imageLoader.displayImage(info.data.get(position).marketLogo, holder.storeIcon);

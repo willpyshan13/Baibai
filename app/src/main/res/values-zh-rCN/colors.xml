@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="tab_bar_background">#5f2d6a</color>
+    <color name="tab_bar_text">#d8badf</color>
+    <color name="tab_bar_glide_background">#0191DA</color>
+    <color name="home_fragment_hot_recommend">#787D83</color>
+    <color name="fragment_background">#c6c6c6</color>
+    <color name="home_fragment_hot_recommend_background">#1C2127</color>
+    <color name="search_keyword_bg">#e4e4e4</color>
+    <color name="blue_deeper">#0182C4</color>
+    <color name="gray">#C4C8D3</color>
+    <color name="detail">#565656</color>
+    <color name="search_text">#3b3b3b</color>
+    <color name="search_bg">#ececec</color>
+    <color name="light_black">#1C2127</color>
+    <color name="text_black">#000000</color>
+    <color name="text_login">#f47e00</color>
+    <color name="title_text">#2a2929</color>
+    <color name="gray_hl">#D2D3D5</color>
+    <color name="gray_dark">#797D86</color>
+    <color name="news">#8C909C</color>
+    <color name="transparent">#00000000</color>
+    <color name="player_bar">#662E323B</color>
+
+    <color name="seekbar_background">#98999D</color>
+    <color name="seekbar_progress">#ff8a00</color>
+    <color name="translucence">#88000000</color>
+    <color name="home_page_background">#5f2d6a</color>
+    <color name="home_goods_price">#bebebe</color>
+    <color name="home_goods_distance">#ff4800</color>
+    <color name="top_bar_background">#7a4c84</color>
+    <color name="mine_background_gray">#f0f0f0</color>
+    <color name="shopping_btn">#ff5500</color>
+    <color name="search_result_price">#c16234</color>
+    <color name="pay_gray_background">#eeeeee</color>
+    <color name="pay_gray_confirm">#4cd964</color>
+    <color name="pay_gray_confirm_gray">#787D83</color>
+
+</resources>
