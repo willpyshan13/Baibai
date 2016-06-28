@@ -65,7 +65,7 @@ public class CreditLifeActivity extends BaseActivity {
                     mTvPoint.setText(LoginCacheUtils.userScore+"");
                     mSpannerString = new SpannableStringBuilder();
                     mSpannerString.append("您还差" + leftScore + "\n积分可换购礼品");
-                    mSpannerString.setSpan(new AbsoluteSizeSpan(80), 3, 3 + leftScore.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    mSpannerString.setSpan(new AbsoluteSizeSpan(75), 3, 3 + leftScore.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     mTvLess.setText(mSpannerString);
                 } catch (JSONException e) {
                     e.printStackTrace();
