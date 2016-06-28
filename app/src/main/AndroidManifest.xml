@@ -105,7 +105,7 @@
             android:label="@string/title_activity_select_gift"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.SearchGoodsActivity" />
-        <activity android:name=".view.QRCodeView" />
+        <activity android:name=".view.QRCodeViewActivity" />
         <activity android:name=".view.SearchResultActivity" />
         <activity
             android:name=".view.SettingActivity"

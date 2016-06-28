@@ -112,24 +112,12 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
 
     private void authorize(String plat) {
         Platform platform = ShareSDK.getPlatform(plat);
-        if (platform == null) {
-//            popupOthers();
-            return;
-        }
-        //判断指定平台是否已经完成授权
-//        if (plat.isAuthValid()) {
-//            String userId = plat.getDb().getUserId();
-//            if (userId != null) {
-////                UIHandler.sendEmptyMessage(MSG_USERID_FOUND, this);
-////                login(plat.getName(), userId, null);
-//                return;
-//            }
-//        }
         platform.setPlatformActionListener(this);
         // true不使用SSO授权，false使用SSO授权
 //        plat.SSOSetting(true);
         //获取用户资料
         platform.showUser(null);
+        platform.authorize();
     }
 
     public void processLogin() {

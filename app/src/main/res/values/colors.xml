@@ -40,4 +40,5 @@
     <color name="pay_gray_confirm">#4cd964</color>
     <color name="pay_gray_confirm_gray">#787D83</color>
 
+    <color name="qrcode_background">#e0000000</color>
 </resources>

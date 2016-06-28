@@ -2,12 +2,14 @@ package com.baibai.view;
 
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.baibai.R;
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
 
-public class QRCodeView extends BaseActivity implements QRCodeReaderView.OnQRCodeReadListener{
+public class QRCodeViewActivity extends BaseActivity implements QRCodeReaderView.OnQRCodeReadListener {
     private QRCodeReaderView mydecoderview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class QRCodeView extends BaseActivity implements QRCodeReaderView.OnQRCod
 
     @Override
     public void onQRCodeRead(String text, PointF[] points) {
-
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
