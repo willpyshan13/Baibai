@@ -139,6 +139,7 @@ public class LocationStoreActivity extends BaseActivity {
             }
             holder.storeIcon.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / ScreenProperties.WIDTH_NUM, ScreenProperties.getScreenHeight() / ScreenProperties.HEIGHT_NUM));
             holder.storeName.setText(info.data.get(position).marketName);
+            holder.storeDistance.setText(info.data.get(position).marketRange);
             holder.rating.setRating(Float.parseFloat(info.data.get(position).marketStar));
             imageLoader.displayImage(info.data.get(position).marketLogo, holder.storeIcon);
             holder.collect.setOnClickListener(new View.OnClickListener() {

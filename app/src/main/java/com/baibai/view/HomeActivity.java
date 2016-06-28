@@ -390,7 +390,7 @@ public class HomeActivity extends BaseActivity implements PullToRefreshBase.OnRe
                 holder.shopName.setText(mGoodsList.get(position).marketName);
                 holder.goodsName.setText(mGoodsList.get(position).goodsName);
                 holder.goodsDiscount.setText((Float.parseFloat(mGoodsList.get(position).goodsDiscount) * 100) / 10 + " 折");
-//                holder.goodsDistance.setText(mGoodsListArray.getJSONObject(position).optString("marketName"));
+                holder.goodsDistance.setText(mGoodsList.get(position).marketRange);
                 holder.goodsprePrice.setText("￥" + mGoodsList.get(position).marketPrice + "元");
 //                holder.goodsContent.setText(mGoodsListArray.getJSONObject(position).optString("marketName"));
             }

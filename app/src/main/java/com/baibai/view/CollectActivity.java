@@ -240,6 +240,7 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
                 convertView = getLayoutInflater().inflate(R.layout.item_current_store, null);
                 holder.goodsIv = (ImageView) convertView.findViewById(R.id.item_current_store);
                 holder.shopName = (TextView) convertView.findViewById(R.id.item_current_tv_name);
+                holder.distance = (TextView) convertView.findViewById(R.id.item_current_tv_distance);
                 holder.ratingBar = (RatingBar) convertView.findViewById(R.id.ratingBar);
                 holder.collect = (ImageButton) convertView.findViewById(R.id.item_current_store_iv_collect);
                 convertView.setTag(holder);
@@ -249,6 +250,7 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
             holder.goodsIv.setLayoutParams(new LinearLayout.LayoutParams(ScreenProperties.getScreenWidth() / ScreenProperties.WIDTH_NUM, ScreenProperties.getScreenHeight() / ScreenProperties.HEIGHT_NUM));
             imageLoader.displayImage(collectStoreBeanList.get(position).marketLogo, holder.goodsIv);
             holder.shopName.setText(collectStoreBeanList.get(position).marketName);
+            holder.distance.setText(collectStoreBeanList.get(position).marketRange);
             holder.ratingBar.setRating(Float.parseFloat(collectStoreBeanList.get(position).marketStar));
             holder.collect.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -264,6 +266,7 @@ public class CollectActivity extends BaseActivity implements PullToRefreshBase.O
             TextView shopName;
             RatingBar ratingBar;
             ImageButton collect;
+            TextView distance;
         }
 
     }
